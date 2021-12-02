@@ -1,29 +1,30 @@
-import 'package:flutter/material.dart';
 import 'dart:math';
 
-class HJDraggableSimpeDemo extends StatefulWidget {
+import 'package:flutter/material.dart';
+
+class HJDraggableSimpleDemo extends StatefulWidget {
   // 该方法仅为对接个人其它项目使用
   static Map<String, WidgetBuilder> route() {
-    return {'/draggable/simple': (BuildContext context) => HJDraggableSimpeDemo()};
+    return {'/draggable/simple': (BuildContext context) => HJDraggableSimpleDemo()};
   }
 
   @override
   State<StatefulWidget> createState() {
-    return HJDraggableSimpeDemoState();
+    return HJDraggableSimpleDemoState();
   }
 }
 
-class HJDraggableSimpeDemoState extends State<HJDraggableSimpeDemo> {
-  List<DataBean> _targerDatas;
-  DataBean _dragData;
+class HJDraggableSimpleDemoState extends State<HJDraggableSimpleDemo> {
+  late List<DataBean> _targetDatas;
+  late DataBean _dragData;
 
   @override
   void initState() {
-    _targerDatas = List<DataBean>();
-    _targerDatas.add(DataBean('北', Offset(110, 0), Colors.green));
-    _targerDatas.add(DataBean('西', Offset(0, 110), Colors.red));
-    _targerDatas.add(DataBean('南', Offset(110, 220), Colors.blue));
-    _targerDatas.add(DataBean('东', Offset(220, 110), Colors.purple));
+    _targetDatas = <DataBean>[];
+    _targetDatas.add(DataBean('北', Offset(110, 0), Colors.green));
+    _targetDatas.add(DataBean('西', Offset(0, 110), Colors.red));
+    _targetDatas.add(DataBean('南', Offset(110, 220), Colors.blue));
+    _targetDatas.add(DataBean('东', Offset(220, 110), Colors.purple));
     _dragData = DataBean(randomTitle(), Offset(110, 110), Colors.pink);
 
     super.initState();
@@ -40,19 +41,19 @@ class HJDraggableSimpeDemoState extends State<HJDraggableSimpeDemo> {
         height: 300,
         color: Colors.grey,
         child: Stack(
-          children: buildItems(_targerDatas, _dragData),
+          children: buildItems(_targetDatas, _dragData),
         ),
       )),
     );
   }
 
   String randomTitle() {
-    int i = Random().nextInt(_targerDatas.length);
-    return _targerDatas[i].title;
+    int i = Random().nextInt(_targetDatas.length);
+    return _targetDatas[i].title;
   }
 
   List<Widget> buildItems(List<DataBean> targetDatas, dragData) {
-    List<Widget> items = List<Widget>();
+    List<Widget> items = <Widget>[];
     targetDatas.forEach((data) {
       items.add(dragTarget(data));
     });
@@ -113,21 +114,29 @@ class HJDraggableSimpeDemoState extends State<HJDraggableSimpeDemo> {
           return baseItem(data, false);
         },
         //返回是否接收 参数为Draggable的data 方向相同则允许接收
-        onWillAccept: (DataBean acceptData) {
-          print('=== onWillAccept: ' + acceptData.title + '==>' + data.title);
-          return acceptData.title.compareTo(data.title) == 0;
+        // onWillAccept: (DataBean acceptData) {
+        //   print('=== onWillAccept: ' + acceptData.title + '==>' + data.title);
+        //   return acceptData.title.compareTo(data.title) == 0;
+        // },
+        onWillAccept: (acceptData) {
+          if (acceptData is DataBean) {
+            print('=== onWillAccept: ${acceptData.title}----${data.title}');
+            return acceptData.title.compareTo(data.title) == 0;
+          }
+          return false;
         },
+
         onAccept: (DataBean acceptData) {
           //接收方法
           print('=== onAccept: ' + acceptData.title + '==>' + data.title);
           setState(() {
             //修改数据进行重绘
             // 交换颜色 并生成随机方向
-            var index = _targerDatas.indexOf(data);
+            var index = _targetDatas.indexOf(data);
             var tmpColor = data.color;
             data.color = acceptData.color;
-            _targerDatas.remove(data);
-            _targerDatas.insert(index, data);
+            _targetDatas.remove(data);
+            _targetDatas.insert(index, data);
             _dragData.title = randomTitle();
             _dragData.color = tmpColor;
           });
@@ -157,4 +166,9 @@ class DataBean {
   Color color;
 
   DataBean(this.title, this.offset, this.color);
+
+  @override
+  String toString() {
+    return 'DataBean{title: $title, offset: $offset, color: $color}';
+  }
 }

@@ -14,7 +14,7 @@ class HJDraggableGridWidget extends StatefulWidget {
 
 class _HJDraggableGridWidgetState extends State<HJDraggableGridWidget> {
   final _titles = ['OC', 'Swift', 'Java', 'C', 'C++', 'C#', 'Dart', 'Python', 'Go'];
-  String _movingValue; // 记录正在移动的值
+  late String _movingValue = ""; // 记录正在移动的值
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +81,7 @@ class _HJDraggableGridWidgetState extends State<HJDraggableGridWidget> {
       onDraggableCanceled: (Velocity velocity, Offset offset) {
         print('=== onDraggableCanceled');
         setState(() {
-          _movingValue = null;
+          _movingValue = "null";
         });
       },
       onDragCompleted: () {
@@ -118,7 +118,7 @@ class _HJDraggableGridWidgetState extends State<HJDraggableGridWidget> {
       _titles.insert(toIndex, moveData);
 
       if (onAccept) {
-        _movingValue = null;
+        _movingValue = "";
       }
     });
   }
