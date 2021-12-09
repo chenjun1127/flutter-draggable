@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:test_app/components/bounce_shape.dart';
 
 class SliderWidget extends StatefulWidget {
   const SliderWidget({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _SliderWidgetState extends State<SliderWidget> {
   Widget build(BuildContext context) {
     return SliderTheme(
       data: SliderTheme.of(context).copyWith(
-
+        trackShape: BounceShape(),
         //已拖动的颜色
         activeTrackColor: Colors.amberAccent,
         //未拖动的颜色

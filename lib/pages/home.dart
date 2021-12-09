@@ -53,6 +53,13 @@ class _HomeState extends State<Home> {
                 subtitle: Text('滑块组件'),
                 onTap: () => Navigator.of(context).pushNamed('/slider-demo'),
               ),
+            ),
+            Card(
+              child: ListTile(
+                title: Text('chart-example-demo'),
+                subtitle: Text('chart-example-'),
+                onTap: () => Navigator.of(context).pushNamed('/chart-demo'),
+              ),
             )
           ],
         ),
