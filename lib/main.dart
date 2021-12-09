@@ -4,6 +4,7 @@ import 'package:test_app/darggable/draggable_simple.dart';
 import 'package:test_app/pages/card_demo.dart';
 import 'package:test_app/pages/chart_demo.dart';
 import 'package:test_app/pages/home.dart';
+import 'package:test_app/pages/inherited_widget_test.dart';
 import 'package:test_app/pages/process_demo.dart';
 import 'package:test_app/pages/slider_demo.dart';
 
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
     routesMap.addAll(CardDemo.route());
     routesMap.addAll(SliderDemo.route());
     routesMap.addAll(ChartDemo.route());
+    routesMap.addAll(InheritedWidgetTest.route());
     return routesMap;
   }
 }

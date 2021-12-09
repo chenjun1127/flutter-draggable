@@ -57,8 +57,15 @@ class _HomeState extends State<Home> {
             Card(
               child: ListTile(
                 title: Text('chart-example-demo'),
-                subtitle: Text('chart-example-'),
+                subtitle: Text('chart-demo'),
                 onTap: () => Navigator.of(context).pushNamed('/chart-demo'),
+              ),
+            ),
+            Card(
+              child: ListTile(
+                title: Text('InheritedWidget-demo'),
+                subtitle: Text('InheritedWidget-test'),
+                onTap: () => Navigator.of(context).pushNamed('/inheritedWidget-demo'),
               ),
             )
           ],

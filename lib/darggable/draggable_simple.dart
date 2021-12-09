@@ -151,7 +151,7 @@ class HJDraggableSimpleDemoState extends State<HJDraggableSimpleDemo> {
     return Container(
       width: 80,
       height: 80,
-      color: data.color,
+      color: data.data,
       child: Center(
         child: Text(title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
       ),
