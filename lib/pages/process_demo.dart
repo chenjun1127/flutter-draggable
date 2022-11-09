@@ -24,6 +24,7 @@ class ProcessDemo extends StatelessWidget {
           topPadding: 0,
           bottomPadding: 0,
           progress: 1,
+          textContainerHeight: 0,
           onChange: (int, bool) {
             print("回调---$int---value---$bool");
           },

@@ -105,6 +105,7 @@ class HJDraggableSimpleDemoState extends State<HJDraggableSimpleDemo> {
 
   // 接收方
   Widget dragTarget(DataBean data) {
+    print("data==$data");
     return Positioned(
       left: data.offset.dx,
       top: data.offset.dy,
@@ -146,12 +147,12 @@ class HJDraggableSimpleDemoState extends State<HJDraggableSimpleDemo> {
   }
 
   // 基础Widgit
-  Widget baseItem(data, draggable) {
+  Widget baseItem(DataBean data, bool draggable) {
     String title = draggable ? '往\"' + data.title + '\"走' : data.title;
     return Container(
       width: 80,
       height: 80,
-      color: data.data,
+      color: data.color,
       child: Center(
         child: Text(title, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
       ),
