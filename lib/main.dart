@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/darggable/draggable_grid_widget.dart.dart';
-import 'package:test_app/darggable/draggable_simple.dart';
+import 'package:test_app/draggable/draggable_grid_widget.dart.dart';
+import 'package:test_app/draggable/draggable_simple.dart';
 import 'package:test_app/pages/card_demo.dart';
 import 'package:test_app/pages/home.dart';
 import 'package:test_app/pages/inherited_widget_test.dart';
