@@ -3,7 +3,7 @@ import 'package:test_app/draggable/draggable_grid_widget.dart.dart';
 import 'package:test_app/draggable/draggable_simple.dart';
 import 'package:test_app/pages/card_demo.dart';
 import 'package:test_app/pages/home.dart';
-import 'package:test_app/pages/inherited_widget_test.dart';
+import 'package:test_app/pages/inherited_widget_demo.dart';
 import 'package:test_app/pages/process_demo.dart';
 import 'package:test_app/pages/slider_demo.dart';
 
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
     routesMap.addAll(ProcessDemo.route());
     routesMap.addAll(CardDemo.route());
     routesMap.addAll(SliderDemo.route());
-    routesMap.addAll(InheritedWidgetTest.route());
+    routesMap.addAll(InheritedWidgetDemo.route());
     return routesMap;
   }
 }

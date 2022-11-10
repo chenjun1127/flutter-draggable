@@ -2,18 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_app/components/share_data_widget.dart';
 
-class InheritedWidgetTest extends StatefulWidget {
-  const InheritedWidgetTest({Key? key}) : super(key: key);
+class InheritedWidgetDemo extends StatefulWidget {
+  const InheritedWidgetDemo({Key? key}) : super(key: key);
 
   static Map<String, WidgetBuilder> route() {
-    return {'/inheritedWidget-demo': (BuildContext context) => InheritedWidgetTest()};
+    return {'/inheritedWidget-demo': (BuildContext context) => InheritedWidgetDemo()};
   }
 
   @override
-  _InheritedWidgetTestState createState() => _InheritedWidgetTestState();
+  _InheritedWidgetDemoState createState() => _InheritedWidgetDemoState();
 }
 
-class _InheritedWidgetTestState extends State<InheritedWidgetTest> {
+class _InheritedWidgetDemoState extends State<InheritedWidgetDemo> {
   int count = 0;
 
   @override
